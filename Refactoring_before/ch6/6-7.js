@@ -1,6 +1,7 @@
-let a = height * width;
+//6.9 변수 이름 바꾸기
+let area = width * height;
 
-const cpyNm = '애플';
+const companyName = '애플';
 
-let tpHd = '제목없음';
-let result = `<h1>${tpHd}</h1>`;
+let Title = '제목없음';
+let result = `<h1>${Title}</h1>`;

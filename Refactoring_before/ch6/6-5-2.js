@@ -1,10 +1,11 @@
+// 6.10 함수 선언 바꾸기
 export default class Book {
   #reservations;
   constructor() {
     this.#reservations = [];
   }
 
-  addReservation(customer) {
+  addReservation(customer, isPriority = false) {
     this.#reservations.push(customer);
   }
 
