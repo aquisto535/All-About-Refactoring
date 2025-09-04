@@ -46,7 +46,7 @@ export class Shipment {
   }
 }
 
-const shipment = new Shipment(new TrackingInformation(999, 'Maersk'));
+const shipment = new Shipment(new TrackingInformation(999, 'Maersk'));//TrackingInformation클래스를 내부화하는 것이 더 좋음
 console.log(shipment.trackingInfo);
 
 shipment.trackingInformation.shippingCompany = 'COSCO';

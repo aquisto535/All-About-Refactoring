@@ -1,12 +1,8 @@
 class Person {
   #name;
   #telephoneNumber;
-  // #officeAreaCode; 
-  // #officeNumber;
   constructor(name, areaCode, number) {
     this.#name = name;
-    // this.#officeAreaCode = areaCode;
-    // this.#officeNumber = number;
     this.#telephoneNumber = new TelephoneNumber(areaCode, number);
   }
 

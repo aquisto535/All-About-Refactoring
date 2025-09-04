@@ -11,29 +11,21 @@ export class Person {
   }
 
   get courses() {
-    //return this.#courses;
-    return [...this.#courses]; //새로운 배열을 만듦
+    return [...this.#courses];
   }
-
-  // set courses(courses) {
-  //   this.#courses = courses;
-  // }
 
   addCourse(course) {
     this.#courses.push(course);
   }
 
-  removeCourse(course, runIfAbssent)
-  {
+  removeCourse(course, runIfAbsent) {
     const index = this.#courses.indexOf(course);
-    if(index === -1) 
-    {
-      runIfAbssent();
+    if (index === -1) {
+      runIfAbsent();
       return;
-    };
+    }
     this.#courses.splice(index, 1);
   }
-
 }
 
 export class Course {
@@ -54,9 +46,13 @@ export class Course {
 }
 
 const ellie = new Person('엘리');
-//ellie.courses.push(new Course('리팩토링', true)); //내부 객체에 접근하도록 허용해버림
 const course = new Course('리팩토링', true);
 ellie.addCourse(course);
-ellie.removeCourse(course, () => { console.log("해당 코스는 없다!")}); //콜백 함수 등록
-ellie.removeCourse(course, () => { console.log("해당 코스는 없다!")});
 console.log(ellie.courses.length);
+ellie.removeCourse(course, () => {
+  console.log('해당 코스는 없다!');
+});
+console.log(ellie.courses.length);
+ellie.removeCourse(course, () => {
+  console.log('해당 코스는 없다!');
+});
