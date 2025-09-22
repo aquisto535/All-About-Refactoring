@@ -1,22 +1,32 @@
-export function trackSummary(points) {
-  const totalTime = calculateTime();
-  const totalDistance = calculateDistance();
-  const pace = totalTime / 60 / totalDistance;
+export function trackSummary(points) 
+{
+  const time = calculateTime();
+  const Distance = calculateDistance(points);
+  const pace = time / 60 / Distance;
   return {
-    time: totalTime,
-    distance: totalDistance,
-    pace: pace,
+    time,Distance, pace
   };
 
-  function calculateDistance() {
-    let result = 0;
-    for (let i = 1; i < points.length; i++) {
-      result += distance(points[i - 1], points[i]);
-    }
-    return result;
-  }
+}
 
-  function distance(p1, p2) {
+//응집도가 낮아 밖으로 함수를 뺌
+
+function calculateTime()
+{
+    return 10000;
+}
+
+function calculateDistance(points)
+{
+  let result = 0;
+  for (let i = 1; i < points.length; i++) {
+    result += distance(points[i - 1], points[i]);
+  }
+  return result;
+}
+
+function distance(p1, p2)
+{
     // 포뮬라: http://www.movable-type.co.uk/scripts/latlong.html
     const EARTH_RADIUS = 3959; // in miles
     const dLat = radians(p2.lat) - radians(p1.lat);
@@ -28,15 +38,10 @@ export function trackSummary(points) {
         Math.pow(Math.sin(dLon / 2), 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return EARTH_RADIUS * c;
-  }
+}
 
-  function radians(degrees) {
-    return (degrees * Math.PI) / 180;
-  }
-
-  function calculateTime() {
-    return 10000;
-  }
+function radians(degrees) {
+  return (degrees * Math.PI) / 180;
 }
 
 const newYork = {
