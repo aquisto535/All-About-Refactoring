@@ -1,19 +1,12 @@
-export function acquireData(input) {
-  const lines = input.split('\n');
-  let firstLine = true;
-  const result = [];
-  for (const line of lines) {
-    if (firstLine) {
-      firstLine = false;
-      continue;
-    }
-    if (line.trim() === '') continue;
-    const record = line.split(',');
-    if (record[1].trim() === 'India') {
-      result.push({ city: record[0].trim(), phone: record[2].trim() });
-    }
-  }
-  return result;
+export function acquireData(input)
+{
+ return input
+        .split('\n')
+        .splice(1) //첫번째 라인 제거
+        .filter(line => line.trim() !== '') //빈 라인 제거
+        .map(line => line.split(',')) //각 라인을 배열로 변환
+        .filter( (line) => line[1].trim() === 'India') //국가가 India인 것만 필터링
+        .map( (line) => ({ city: line[0].trim(), phone: line[2].trim() }) ); //객체로 매핑
 }
 
 const input = `office, country, telephone\n
